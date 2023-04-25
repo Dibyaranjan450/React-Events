@@ -1,14 +1,14 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useRouteLoaderData } from "react-router-dom";
 
 import EventForm from "../components/EventForm";
 
 function EditEventPage() {
     const data = useLoaderData();
-
+    const token = useRouteLoaderData('root');
+    
     return(
         <div>
-            <h1> Edit Event Page </h1>
-            <EventForm method={'patch'} event={data.event} />
+            { token && <EventForm method={'patch'} event={data.event} />}
         </div>
     );
 }
